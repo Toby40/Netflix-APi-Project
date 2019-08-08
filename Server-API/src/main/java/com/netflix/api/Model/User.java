@@ -20,6 +20,8 @@ public class User {
         this.id_no = id_no;
     }
 
+    private User(){}
+
     public Long getId() {
         return id;
     }
