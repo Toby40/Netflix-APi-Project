@@ -10,12 +10,12 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name = "category_id")
-    private String category;
+    private Category categoryid;
 
     @Column(name = "type")
-    private String movie_type;
+    private String type;
 
     @Column(name = "title")
     private String title;
@@ -23,16 +23,17 @@ public class Movie {
     @Column(name = "description")
     private String description;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name = "user_id",nullable = true)
-    private int userid;
+    private User userid;
 
-    public Movie(String category, String movie_type, String title, String description,int userid) {
-        this.category=category;
-        this.movie_type = movie_type;
+    public Movie(Category category_id, String movie_type, String title, String description,User userid) {
+//        this.category_id=category_id;
+        this.type = movie_type;
         this.title = title;
         this.description = description;
         this.userid=userid;
+        this.categoryid = category_id;
 
     }
 
@@ -46,13 +47,21 @@ public class Movie {
         this.id = id;
     }
 
-    public String getCategory() {
-        return category;
+    public Category getCategory_id() {
+        return categoryid;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategory_id(Category category_id) {
+        this.categoryid = category_id;
     }
+
+    //    public String getCategory() {
+//        return category_id;
+//    }
+
+//    public void setCategory(String category) {
+//        this.category = category;
+//    }
 
     public String getTitle() {
         return title;
@@ -71,18 +80,18 @@ public class Movie {
     }
 
     public String getMovie_type() {
-        return movie_type;
+        return type;
     }
 
     public void setMovie_type(String movie_type) {
-        this.movie_type = movie_type;
+        this.type = movie_type;
     }
 
-    public int getUserid() {
+    public User getUserid() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(User userid) {
         this.userid = userid;
     }
 }
