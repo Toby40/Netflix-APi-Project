@@ -16,9 +16,11 @@ public class NetflixController {
     private final MovieRepository movieRepository;
 
 
+
     public NetflixController(UserRepository userRepository, MovieRepository movieRepository){
         this.userRepository = userRepository;
         this.movieRepository = movieRepository;
+
     }
 
     @PostMapping(value = "register")

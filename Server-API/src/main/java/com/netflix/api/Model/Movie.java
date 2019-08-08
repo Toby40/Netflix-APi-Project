@@ -1,5 +1,6 @@
 package com.netflix.api.Model;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -11,7 +12,7 @@ public class Movie {
 
     @OneToOne
     @JoinColumn(name = "category_id")
-    private Category category;
+    private String category;
 
     @Column(name = "type")
     private String movie_type;
@@ -26,15 +27,16 @@ public class Movie {
     @JoinColumn(name = "user_id",nullable = true)
     private int userid;
 
-
-
-    public Movie(Category category, String movie_type, String title, String description, int userid) {
-        this.category = category;
+    public Movie(String category, String movie_type, String title, String description,int userid) {
+        this.category=category;
         this.movie_type = movie_type;
         this.title = title;
         this.description = description;
-        this.userid = userid;
+        this.userid=userid;
+
     }
+
+    private Movie(){}
 
     public Long getId() {
         return id;
@@ -44,11 +46,11 @@ public class Movie {
         this.id = id;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
