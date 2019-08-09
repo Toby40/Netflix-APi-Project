@@ -12,6 +12,11 @@ public class Category {
     @Column(name = "name")
     private String name;
 
+    @OneToOne(mappedBy = "categoryid")
+    private Movie movie;
+
+
+
     public Category(String name){
         this.name = name;
     }

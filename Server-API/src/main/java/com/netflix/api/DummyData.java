@@ -44,10 +44,9 @@ public class DummyData implements CommandLineRunner {
         User user3 = new User("Evans",7686);
         User user4 = new User("Adrian",8990);
         User user5 = new User("Ted",5678);
+        userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));
 
-
-//        Movie test = new Movie(category1,"Original","IT","IT",5);
-
+        //create movies
         Movie movie1=new Movie(category1,"Original","No where to run","Acted by jean claud verndame",user1);
 
         Movie movie2=new Movie(category2,"original","IT","Acted by Bill hader ", user5);

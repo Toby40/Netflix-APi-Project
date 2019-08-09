@@ -1,6 +1,8 @@
 package com.netflix.api.Model;
 
 
+import org.hibernate.annotations.SortNatural;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,8 +25,9 @@ public class Movie {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name = "user_id",nullable = true)
+    @SortNatural
     private User userid;
 
     public Movie(Category category_id, String movie_type, String title, String description,User userid) {
