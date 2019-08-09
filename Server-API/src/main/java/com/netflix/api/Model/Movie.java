@@ -1,6 +1,7 @@
 package com.netflix.api.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.SortNatural;
 
 import javax.persistence.*;
@@ -12,9 +13,9 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name = "category_id")
-    private Category categoryid;
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},targetEntity = Category.class)
+    @JoinColumn(name = "categoryid")
+    private int categoryid;
 
     @Column(name = "type")
     private String type;
@@ -25,12 +26,13 @@ public class Movie {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},targetEntity = User.class)
+    @JsonIgnore
     @JoinColumn(name = "user_id",nullable = true)
     @SortNatural
     private User userid;
 
-    public Movie(Category category_id, String movie_type, String title, String description,User userid) {
+    public Movie(int category_id, String movie_type, String title, String description,User userid) {
 //        this.category_id=category_id;
         this.type = movie_type;
         this.title = title;
@@ -50,11 +52,11 @@ public class Movie {
         this.id = id;
     }
 
-    public Category getCategory_id() {
+    public int getCategory_id() {
         return categoryid;
     }
 
-    public void setCategory_id(Category category_id) {
+    public void setCategory_id(int category_id) {
         this.categoryid = category_id;
     }
 
@@ -96,5 +98,17 @@ public class Movie {
 
     public void setUserid(User userid) {
         this.userid = userid;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", categoryid=" + categoryid +
+                ", type='" + type + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", userid=" + userid +
+                '}';
     }
 }
