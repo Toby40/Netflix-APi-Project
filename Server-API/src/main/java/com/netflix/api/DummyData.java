@@ -1,5 +1,4 @@
 package com.netflix.api;
-
 import com.netflix.api.Model.Category;
 import com.netflix.api.Model.Movie;
 import com.netflix.api.Model.User;

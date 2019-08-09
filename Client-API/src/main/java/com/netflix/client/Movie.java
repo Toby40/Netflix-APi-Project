@@ -1,48 +1,32 @@
-package com.netflix.api.Model;
+package com.netflix.client;
 
 
-import org.hibernate.annotations.SortNatural;
-
-import javax.persistence.*;
-
-@Entity
-@Table(name = "movies")
 public class Movie {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name = "category_id")
     private Category categoryid;
 
-    @Column(name = "type")
     private String type;
 
-    @Column(name = "title")
     private String title;
 
-    @Column(name = "description")
     private String description;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name = "user_id",nullable = true)
-    @SortNatural
     private User userid;
 
-    public Movie(Category category_id, String movie_type, String title, String description,User userid) {
+    public Movie(Category categoryid, String type) {
+        this.categoryid = categoryid;
+        this.type = type;
+    }
 
-        this.type = movie_type;
+    public Movie(Category categoryid, String type, String title, String description, User userid) {
+        this.categoryid = categoryid;
+        this.type = type;
         this.title = title;
         this.description = description;
         this.userid = userid;
-        this.categoryid = category_id;
-
     }
-    private Movie(){
 
-
-    }
+    private Movie(){}
 
     public Long getId() {
         return id;
@@ -90,5 +74,17 @@ public class Movie {
 
     public void setUserid(User userid) {
         this.userid = userid;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", categoryid=" + categoryid +
+                ", type='" + type + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", userid=" + userid +
+                '}';
     }
 }
