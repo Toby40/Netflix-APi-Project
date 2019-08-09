@@ -12,8 +12,8 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(mappedBy = "categoryid")
-    private Movie movie;
+    @OneToOne(mappedBy = "categoryid",targetEntity = Movie.class)
+    private String movie;
 
 
 
