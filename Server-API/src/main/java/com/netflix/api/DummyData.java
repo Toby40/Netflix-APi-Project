@@ -46,15 +46,15 @@ public class DummyData implements CommandLineRunner {
         userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));
 
         //create movies
-        Movie movie1=new Movie(category1,"Original","No where to run","Acted by jean claud verndame",user1);
+        Movie movie1=new Movie(1,"Original","No where to run","Acted by jean claud verndame",user1);
 
-        Movie movie2=new Movie(category2,"original","IT","Acted by Bill hader ", user5);
+        Movie movie2=new Movie(2,"original","IT","Acted by Bill hader ", user5);
 
-        Movie movie3=new Movie(category3,"suggested","Game of thrones","Acted by jean Jones snow",user3);
+        Movie movie3=new Movie(3,"suggested","Game of thrones","Acted by jean Jones snow",user3);
 
-        Movie movie4=new Movie(category4,"original","Avengers","Acted by Chris Evans",user2);
+        Movie movie4=new Movie(4,"original","Avengers","Acted by Chris Evans",user2);
 
-        Movie movie5=new Movie(category5,"suggested","Ride alone","Acted by Kevin Hart",user4);
+        Movie movie5=new Movie(5,"suggested","Ride alone","Acted by Kevin Hart",user4);
 
         movieRepository.saveAll(Arrays.asList(movie1,movie2,movie3,movie4,movie5));
     }

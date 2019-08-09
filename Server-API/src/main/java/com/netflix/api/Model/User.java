@@ -18,7 +18,7 @@ public class User {
     @Column(name = "identifaction_number")
     private int id_no;
 
-    @OneToMany(mappedBy = "userid")
+    @OneToMany(mappedBy = "userid",targetEntity = Movie.class)
     @SortNatural
     private List<Movie> movie;
 

@@ -1,6 +1,7 @@
 package com.netflix.api.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.SortNatural;
 
 import javax.persistence.*;
@@ -12,8 +13,9 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name = "category_id")
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},targetEntity = Category.class)
+    @JoinColumn(name = "categoryid")
+//    @Column(name = "categoryid")
     private Category categoryid;
 
     @Column(name = "type")
@@ -25,13 +27,15 @@ public class Movie {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},targetEntity = User.class)
+    @JsonIgnore
     @JoinColumn(name = "user_id",nullable = true)
     @SortNatural
     private User userid;
 
-    public Movie(Category category_id, String movie_type, String title, String description,User userid) {
 
+    public Movie(Category category_id, String movie_type, String title, String description,User userid) {
+//        this.category_id=category_id;
         this.type = movie_type;
         this.title = title;
         this.description = description;
@@ -90,5 +94,17 @@ public class Movie {
 
     public void setUserid(User userid) {
         this.userid = userid;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", categoryid=" + categoryid +
+                ", type='" + type + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", userid=" + userid +
+                '}';
     }
 }

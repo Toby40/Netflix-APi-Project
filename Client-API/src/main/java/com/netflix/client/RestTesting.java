@@ -54,7 +54,7 @@ public class RestTesting implements CommandLineRunner {
         Movie deletemovie=restTemplate.postForObject("http://localhost:8080/api/" + newuser.getId() + "/suggestion/delete",newMovie,Movie.class);
 
         System.out.println(deletemovie.toString());
-        
+
     }
 
 
