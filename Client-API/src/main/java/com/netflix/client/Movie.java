@@ -3,7 +3,7 @@ package com.netflix.client;
 
 public class Movie {
     private Long id;
-    private Category categoryid;
+    private Integer categoryid;
 
     private String type;
 
@@ -11,14 +11,14 @@ public class Movie {
 
     private String description;
 
-    private User userid;
+    private Integer userid;
 
-    public Movie(Category categoryid, String type) {
-        this.categoryid = categoryid;
-        this.type = type;
-    }
+//    public Movie(Category categoryid, String type) {
+//        this.categoryid = categoryid;
+//        this.type = type;
+//    }
 
-    public Movie(Category categoryid, String type, String title, String description, User userid) {
+    public Movie(Integer categoryid, String type, String title, String description, Integer userid) {
         this.categoryid = categoryid;
         this.type = type;
         this.title = title;
@@ -36,11 +36,11 @@ public class Movie {
         this.id = id;
     }
 
-    public Category getCategoryid() {
+    public Integer getCategoryid() {
         return categoryid;
     }
 
-    public void setCategoryid(Category categoryid) {
+    public void setCategoryid(Integer categoryid) {
         this.categoryid = categoryid;
     }
 
@@ -68,11 +68,11 @@ public class Movie {
         this.description = description;
     }
 
-    public User getUserid() {
+    public Integer getUserid() {
         return userid;
     }
 
-    public void setUserid(User userid) {
+    public void setUserid(Integer userid) {
         this.userid = userid;
     }
 
