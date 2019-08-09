@@ -1,6 +1,9 @@
 package com.netflix.api.Model;
 
+import org.hibernate.annotations.SortNatural;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -14,6 +17,10 @@ public class User {
 
     @Column(name = "identifaction_number")
     private int id_no;
+
+    @OneToMany(mappedBy = "userid")
+    @SortNatural
+    private List<Movie> movie;
 
     public User(String name, int id_no) {
         this.name = name;

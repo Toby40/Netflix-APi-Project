@@ -30,17 +30,17 @@ public class NetflixController {
 
     @GetMapping(value = "{categoryid}/{type}")
     public List<Movie> findByCategoryIdandType(@PathVariable int categoryid, @PathVariable String type){
-        return movieRepository.findByCategoryAndMovie_type(categoryid,type);
+        return movieRepository.findByCategoryidAndType(categoryid,type);
     }
 
     @PostMapping(value = "{userid}/suggestion/create")
     public Movie createMovieSuggestion(@RequestBody Movie movie,@PathVariable int userid){
 
-        movie.setCategory(movie.getCategory());
-        movie.setDescription(movie.getDescription());
-        movie.setMovie_type(movie.getMovie_type());
-        movie.setTitle(movie.getTitle());
-        movie.setUserid(userid);
+//        movie.setCategory(movie.getCategory());
+//        movie.setDescription(movie.getDescription());
+//        movie.setMovie_type(movie.getMovie_type());
+//        movie.setTitle(movie.getTitle());
+//        movie.setUserid(userid);
 
         return movieRepository.save(movie);
     }

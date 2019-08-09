@@ -10,7 +10,7 @@ public interface MovieRepository extends JpaRepository<Movie,Long> {
     // Select * from movies
     List<Movie> findAll();
 
-    List<Movie> findByCategoryAndMovie_type(int id,String type);
+    List<Movie> findByCategoryidAndType(int id,String type);
 
     List<Movie> findById(int id);
 }
