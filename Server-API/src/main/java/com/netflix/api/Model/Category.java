@@ -13,9 +13,8 @@ public class Category {
     private String name;
 
     @OneToOne(mappedBy = "categoryid",targetEntity = Movie.class)
-    private String movie;
 
-
+    private Movie movie;
 
     public Category(String name){
         this.name = name;

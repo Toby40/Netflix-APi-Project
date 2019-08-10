@@ -1,52 +1,32 @@
-package com.netflix.api.Model;
+package com.netflix.client;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.SortNatural;
-
-import javax.persistence.*;
-
-@Entity
-@Table(name = "movies")
 public class Movie {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Integer categoryid;
 
-    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},targetEntity = Category.class)
-    @JoinColumn(name = "categoryid")
-
-//    @Column(name = "categoryid")
-    private Category categoryid;
-
-
-    @Column(name = "type")
     private String type;
 
-    @Column(name = "title")
     private String title;
 
-    @Column(name = "description")
     private String description;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},targetEntity = User.class)
-    @JsonIgnore
-    @JoinColumn(name = "user_id",nullable = true)
-    @SortNatural
-    private User userid;
+    private Integer userid;
 
-    public Movie( String movie_type, String title, String description) {
-//        this.category_id=category_id;
-        this.type = movie_type;
+//    public Movie(Category categoryid, String type) {
+//        this.categoryid = categoryid;
+//        this.type = type;
+//    }
+
+    public Movie(Integer categoryid, String type, String title, String description, Integer userid) {
+        this.categoryid = categoryid;
+        this.type = type;
         this.title = title;
         this.description = description;
-
-
+        this.userid = userid;
     }
-    private Movie(){
 
-
-    }
+    private Movie(){}
 
     public Long getId() {
         return id;
@@ -56,13 +36,12 @@ public class Movie {
         this.id = id;
     }
 
-    public Category getCategoryid() {
+    public Integer getCategoryid() {
         return categoryid;
     }
 
-    public void setCategoryid(Category categoryid) {
+    public void setCategoryid(Integer categoryid) {
         this.categoryid = categoryid;
-
     }
 
     public String getType() {
@@ -89,11 +68,11 @@ public class Movie {
         this.description = description;
     }
 
-    public User getUserid() {
+    public Integer getUserid() {
         return userid;
     }
 
-    public void setUserid(User userid) {
+    public void setUserid(Integer userid) {
         this.userid = userid;
     }
 
