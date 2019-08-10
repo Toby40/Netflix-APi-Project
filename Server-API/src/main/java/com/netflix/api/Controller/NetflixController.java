@@ -1,5 +1,6 @@
 package com.netflix.api.Controller;
 
+import com.netflix.api.Model.Category;
 import com.netflix.api.Model.Movie;
 import com.netflix.api.Model.User;
 import com.netflix.api.NotFoundException;
@@ -15,8 +16,6 @@ public class NetflixController {
     private final UserRepository userRepository;
     private final MovieRepository movieRepository;
 
-
-
     public NetflixController(UserRepository userRepository, MovieRepository movieRepository){
         this.userRepository = userRepository;
         this.movieRepository = movieRepository;
@@ -29,19 +28,12 @@ public class NetflixController {
     }
 
     @GetMapping(value = "{categoryid}/{type}")
-    public List<Movie> findByCategoryIdandType(@PathVariable int categoryid, @PathVariable String type){
+    public List<Movie> findByCategoryIdandType(@PathVariable Category categoryid, @PathVariable String type){
         return movieRepository.findByCategoryidAndType(categoryid,type);
     }
 
     @PostMapping(value = "{userid}/suggestion/create")
-    public Movie createMovieSuggestion(@RequestBody Movie movie,@PathVariable int userid){
-
-//        movie.setCategory(movie.getCategory());
-//        movie.setDescription(movie.getDescription());
-//        movie.setMovie_type(movie.getMovie_type());
-//        movie.setTitle(movie.getTitle());
-//        movie.setUserid(userid);
-
+    public Movie createMovieSuggestion(@RequestBody Movie movie,@PathVariable User userid){
         return movieRepository.save(movie);
     }
 
