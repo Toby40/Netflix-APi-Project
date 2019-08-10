@@ -15,8 +15,10 @@ public class Movie {
 
     @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},targetEntity = Category.class)
     @JoinColumn(name = "categoryid")
+
 //    @Column(name = "categoryid")
     private Category categoryid;
+
 
     @Column(name = "type")
     private String type;
@@ -32,7 +34,6 @@ public class Movie {
     @JoinColumn(name = "user_id",nullable = true)
     @SortNatural
     private User userid;
-
 
     public Movie( String movie_type, String title, String description) {
 //        this.category_id=category_id;
@@ -61,6 +62,7 @@ public class Movie {
 
     public void setCategoryid(Category categoryid) {
         this.categoryid = categoryid;
+
     }
 
     public String getType() {
