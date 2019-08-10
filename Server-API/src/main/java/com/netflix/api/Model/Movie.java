@@ -34,13 +34,12 @@ public class Movie {
     private User userid;
 
 
-    public Movie(Category category_id, String movie_type, String title, String description,User userid) {
+    public Movie( String movie_type, String title, String description) {
 //        this.category_id=category_id;
         this.type = movie_type;
         this.title = title;
         this.description = description;
-        this.userid = userid;
-        this.categoryid = category_id;
+
 
     }
     private Movie(){
