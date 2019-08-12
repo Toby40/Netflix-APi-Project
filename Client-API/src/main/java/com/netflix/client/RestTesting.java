@@ -1,6 +1,7 @@
 package com.netflix.client;
 
 import org.springframework.boot.CommandLineRunner;
+//<<<<<<< Updated upstream
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +16,9 @@ public class RestTesting implements CommandLineRunner {
     public void run(String... args) throws Exception {
         RestTemplate restTemplate=new RestTemplate();
     // Registering are user
-        User newuser=new User("Mary",6);
+        User newUser=new User("Mary",6);
         User createdUser = restTemplate.postForObject(
-                "http://localhost:8080/api/register",
-                newuser, User.class);
+                "http://localhost:8080/api/register",newUser, User.class);
         System.out.println(createdUser.toString());
 
         //Listing movies
@@ -42,21 +42,29 @@ public class RestTesting implements CommandLineRunner {
 
         System.err.println("Creating(POST)______________________________");
         // Updating movie suggestions
-        Movie newMovie=new Movie(1,"Series","lengend of the sicker","Acted by Sharon stocks", newuser.getId());
+        Movie newMovie=new Movie(1,"Series","legend of the seeker","Acted by Sharon stocks", newUser.getId());
         Movie createdMovie=restTemplate.postForObject(
-                "http://localhost:8080/api/" + newuser.getId() + "/suggestion/update",
+                "http://localhost:8080/api/" + newUser.getId() + "/suggestion/update",
                 newMovie,
                 Movie.class
         );
         System.out.println(createdMovie.toString());
 
         //Delete suggestions
-        Movie deletemovie=restTemplate.postForObject("http://localhost:8080/api/" + newuser.getId() + "/suggestion/delete",newMovie,Movie.class);
+        Movie deleteMovie=restTemplate.postForObject("http://localhost:8080/api/" + newUser.getId() + "/suggestion/delete",newMovie,Movie.class);
 
-        System.out.println(deletemovie.toString());
+        System.out.println(deleteMovie.toString());
 
     }
 
 
 
+//=======
+
+/*public class RestTesting implements CommandLineRunner {
+    @Override
+    public void run(String... args) throws Exception {
+
+    }
+>>>>>>> Stashed changes*/
 }

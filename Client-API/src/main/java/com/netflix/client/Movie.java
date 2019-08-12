@@ -1,9 +1,10 @@
 package com.netflix.client;
 
+//<<<<<<< Updated upstream
 
 public class Movie {
     private Long id;
-    private Integer categoryid;
+    private Integer categoryId;
 
     private String type;
 
@@ -11,22 +12,23 @@ public class Movie {
 
     private String description;
 
-    private Integer userid;
+    private Integer userId;
 
-//    public Movie(Category categoryid, String type) {
-//        this.categoryid = categoryid;
+//    public Movie(Category categoryId, String type) {
+//        this.categoryId = categoryId;
 //        this.type = type;
 //    }
 
-    public Movie(Integer categoryid, String type, String title, String description, Integer userid) {
-        this.categoryid = categoryid;
+    public Movie(Integer categoryId, String type, String title, String description, Integer userId) {
+        this.categoryId = categoryId;
         this.type = type;
         this.title = title;
         this.description = description;
-        this.userid = userid;
+        this.userId = userId;
     }
 
-    private Movie(){}
+    private Movie() {
+    }
 
     public Long getId() {
         return id;
@@ -36,12 +38,12 @@ public class Movie {
         this.id = id;
     }
 
-    public Integer getCategoryid() {
-        return categoryid;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryid(Integer categoryid) {
-        this.categoryid = categoryid;
+    public void setCategoryid(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getType() {
@@ -68,23 +70,24 @@ public class Movie {
         this.description = description;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Override
     public String toString() {
         return "Movie{" +
                 "id=" + id +
-                ", categoryid=" + categoryid +
+                ", categoryid=" + categoryId +
                 ", type='" + type + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", userid=" + userid +
+                ", userid=" + userId +
                 '}';
     }
+
 }
